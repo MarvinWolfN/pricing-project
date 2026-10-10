@@ -1,187 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f7fb">
-  <title>Hello, pricing! — Marvin Natterer</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #182230;
-      background: #f6f7fb;
-      font-synthesis: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      min-width: 320px;
-      min-height: 100vh;
-      margin: 0;
-      padding: 48px 20px;
-      display: grid;
-      place-items: center;
-    }
-
-    main {
-      width: min(100%, 960px);
-    }
-
-    .intro {
-      margin-bottom: 32px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      color: #566579;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 7vw, 3.25rem);
-      letter-spacing: -0.045em;
-      line-height: 1.1;
-    }
-
-    .subtitle {
-      margin: 12px 0 0;
-      color: #566579;
-      font-size: 1rem;
-    }
-
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .plan {
-      padding: 24px;
-      border: 1px solid #e0e5ed;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 8px 24px rgb(24 34 48 / 5%);
-    }
-
-    .plan.featured {
-      border-color: #5468e8;
-      box-shadow: 0 12px 32px rgb(84 104 232 / 13%);
-    }
-
-    .plan h2 {
-      margin: 0 0 14px;
-      font-size: 1.2rem;
-    }
-
-    .price {
-      margin: 0;
-      font-size: 2rem;
-      font-weight: 750;
-      letter-spacing: -0.04em;
-    }
-
-    .price span {
-      color: #697789;
-      font-size: 0.95rem;
-      font-weight: 450;
-      letter-spacing: 0;
-    }
-
-    .features {
-      display: grid;
-      gap: 12px;
-      margin: 22px 0 0;
-      padding: 0;
-      color: #465467;
-      font-size: 0.95rem;
-      list-style: none;
-    }
-
-    .features li::before {
-      content: "✓";
-      margin-right: 9px;
-      color: #4256d0;
-      font-weight: 700;
-    }
-
-    footer {
-      margin-top: 28px;
-      color: #697789;
-      font-size: 0.85rem;
-      text-align: center;
-    }
-
-    @media (max-width: 680px) {
-      body {
-        padding: 36px 18px;
-      }
-
-      .intro {
-        margin-bottom: 24px;
-      }
-
-      .plans {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .plan {
-        padding: 21px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humus Coast - Food Waste Collection</title>
+    <style>
+        :root {
+            --brand-color: #2E7D32;
+            --brand-color-dark: #1B5E20;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--brand-color);
+        }
+        nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: var(--brand-color);
+            text-align: center;
+        }
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--brand-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            min-height: 44px;
+            line-height: 44px;
+            padding: 0 1.5rem;
+        }
+        .btn:hover {
+            background-color: var(--brand-color-dark);
+        }
+        .benefits ul, .how-it-works ol {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        .benefits li, .how-it-works li {
+            margin-bottom: 1rem;
+        }
+        .pricing-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--text-color);
+        }
+        .card.recommended {
+            border: 2px solid var(--brand-color);
+            position: relative;
+        }
+        .card.recommended::before {
+            content: 'Recommended';
+            background: var(--brand-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--brand-color);
+            margin: 1rem 0;
+        }
+        .unit {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .target, .includes {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .card .btn {
+            margin-top: auto;
+        }
+        .conditions {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            color: #555;
+        }
+        .faq dt {
+            font-weight: bold;
+            margin-top: 1.5rem;
+        }
+        .faq dd {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+        .contact {
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #eee;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 768px) {
+            .pricing-cards {
+                flex-direction: column;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            header {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <main>
-    <header class="intro">
-      <p class="eyebrow">Simple plans for a fictional app</p>
-      <h1>Hello, pricing!</h1>
-      <p class="subtitle">A little something by Marvin Natterer</p>
-    </header>
 
-    <section class="plans" aria-label="Monthly pricing plans">
-      <article class="plan">
-        <h2>Free</h2>
-        <p class="price">€0 <span>/ month</span></p>
-        <ul class="features">
-          <li>3 projects</li>
-          <li>Basic analytics</li>
-          <li>Community support</li>
-        </ul>
-      </article>
+<header>
+    <div class="logo">Humus Coast</div>
+    <nav>
+        <a href="#benefits">Benefits</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-      <article class="plan featured">
-        <h2>Basic</h2>
-        <p class="price">€9 <span>/ month</span></p>
-        <ul class="features">
-          <li>Unlimited projects</li>
-          <li>Advanced analytics</li>
-          <li>Email support</li>
-        </ul>
-      </article>
+<section id="hero" class="hero">
+    <h1>Turn Your Food Waste into Value</h1>
+    <p>We collect separated food waste from your hospitality business and turn it into high-quality compost. By diverting food waste from standard municipal bins, you save significantly on rising waste fees.</p>
+    <a href="#pricing" class="btn">See Our Plans</a>
+</section>
 
-      <article class="plan">
-        <h2>Pro</h2>
-        <p class="price">€19 <span>/ month</span></p>
-        <ul class="features">
-          <li>Everything in Basic</li>
-          <li>Team collaboration</li>
-          <li>Priority support</li>
-        </ul>
-      </article>
-    </section>
+<section id="benefits" class="benefits">
+    <h2>Main Benefits</h2>
+    <ul>
+        <li>Save money on rising municipal mixed-waste fees.</li>
+        <li>Turn your food waste into valuable compost.</li>
+        <li>Get certified CO2 reporting for your eco-labels.</li>
+    </ul>
+</section>
 
-    <footer>Prices shown in euros, billed monthly.</footer>
-  </main>
+<section id="how" class="how-it-works">
+    <h2>How it Works</h2>
+    <ol>
+        <li>You separate food waste in our provided hygienic bins.</li>
+        <li>We collect the waste according to strict hygiene schedules.</li>
+        <li>We turn it into compost and provide your eco-report.</li>
+    </ol>
+</section>
+
+<section id="pricing">
+    <h2>Pricing</h2>
+    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Cut your waste costs by at least 15% compared to the new 2027 municipal fees.</p>
+    
+    <div class="pricing-cards">
+        <div class="card">
+            <h3>Shared Basic</h3>
+            <div class="price">€100<span class="unit"> / per month</span></div>
+            <div class="target"><strong>For:</strong> Old town restaurants</div>
+            <div class="includes"><strong>Includes:</strong> Food-waste collection in a shared bin</div>
+            <a href="#contact" class="btn">Choose Shared Basic</a>
+        </div>
+        
+        <div class="card">
+            <h3>Shared Premium</h3>
+            <div class="price">€120<span class="unit"> / per month</span></div>
+            <div class="target"><strong>For:</strong> Old town restaurants</div>
+            <div class="includes"><strong>Includes:</strong> Shared collection, plus "We recycle" eco-sticker</div>
+            <a href="#contact" class="btn">Choose Shared Premium</a>
+        </div>
+        
+        <div class="card">
+            <h3>Medium Hotel</h3>
+            <div class="price">€790<span class="unit"> / per month</span></div>
+            <div class="target"><strong>For:</strong> Mid-size hotels</div>
+            <div class="includes"><strong>Includes:</strong> Collection, 1 bin, regular pickups</div>
+            <a href="#contact" class="btn">Choose Medium Hotel</a>
+        </div>
+        
+        <div class="card recommended">
+            <h3>Large Hotel</h3>
+            <div class="price">€2900<span class="unit"> / per month</span></div>
+            <div class="target"><strong>For:</strong> Large hotels</div>
+            <div class="includes"><strong>Includes:</strong> Collection, multiple bins, monthly CO2 and waste report</div>
+            <a href="#contact" class="btn">Choose Large Hotel</a>
+        </div>
+    </div>
+    
+    <div class="conditions">
+        <p><strong>Conditions:</strong> Restaurant plans require sharing a collection point (up to 5 neighbors). Hotel chains get 15% off for all their hotels.</p>
+        <p><em>Note: All prices exclude VAT.</em></p>
+    </div>
+</section>
+
+<section id="faq" class="faq">
+    <h2>FAQ</h2>
+    <dl>
+        <dt>Do you provide the bins?</dt>
+        <dd>Yes, we provide hygienic bins for all our plans.</dd>
+        
+        <dt>How often do you collect?</dt>
+        <dd>We collect according to strict municipal hygiene schedules depending on the season.</dd>
+        
+        <dt>Are the savings guaranteed?</dt>
+        <dd>Savings depend on your waste volume, but our plans are structured to beat the 2027 municipal mixed-waste rates.</dd>
+        
+        <dt>Can I cancel anytime?</dt>
+        <dd>Please contact us to discuss contract terms specific to your business size.</dd>
+    </dl>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Ready to start saving? Email us at:</p>
+    <p><a href="mailto:hello@humuscoast.hr" style="font-weight: bold; color: var(--brand-color); text-decoration: none; font-size: 1.2rem;">hello@humuscoast.hr</a></p>
+</section>
+
+<footer>
+    <p>© 2026 Humus Coast student project, fictitious company</p>
+</footer>
+
 </body>
 </html>
